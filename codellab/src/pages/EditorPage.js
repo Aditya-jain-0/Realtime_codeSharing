@@ -63,8 +63,6 @@ const EditorPage = () => {
             );
         };
         init();
-        // error :- application will display the user avatar and corresponding code editor multiple times
-        // because there is issue regarding the socket disconnection for that particular user
         return () => {
             socketRef.current.disconnect();
             socketRef.current.off(ACTIONS.JOINED);
