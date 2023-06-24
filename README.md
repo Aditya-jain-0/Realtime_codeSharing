@@ -17,4 +17,4 @@ uuid: Version 9.0.0
 Issue:
 Currently, there is an error where multiple connections are being displayed inside the editor page for a single user. This issue needs to be resolved to ensure that each user has a single connection displayed.
 
-Please provide more details about the specific errors or issues you are facing so that I can assist you in reframing and resolving the problem more effectively.
+The above Issue is fixed by Removing react Strictmode in react 18

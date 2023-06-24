@@ -11,7 +11,7 @@ const EditorPage = () => {
     const codeRef = useRef(null);
     const location = useLocation();
     const { roomId } = useParams(); //getting roomid that was set in from routing in app.js 
-    const reactNavigator = useNavigate();
+    const Navigator = useNavigate();
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const EditorPage = () => {
             function handleErrors(e) {
                 console.log('socket error', e);
                 toast.error('Socket connection failed');
-                reactNavigator('/');
+                Navigator('/');
             }
 
             socketRef.current.emit(ACTIONS.JOIN, {
@@ -66,9 +66,9 @@ const EditorPage = () => {
         // error :- application will display the user avatar and corresponding code editor multiple times
         // because there is issue regarding the socket disconnection for that particular user
         return () => {
-            // socketRef.current.disconnect();
-            // socketRef.current.off(ACTIONS.JOINED);
-            // socketRef.current.off(ACTIONS.DISCONNECTED);
+            socketRef.current.disconnect();
+            socketRef.current.off(ACTIONS.JOINED);
+            socketRef.current.off(ACTIONS.DISCONNECTED);
         }
     }, []);
 
@@ -83,7 +83,7 @@ const EditorPage = () => {
     }
 
     function leaveRoom() {
-        reactNavigator('/');
+        Navigator('/');
     }
 
     if (!location.state) {
