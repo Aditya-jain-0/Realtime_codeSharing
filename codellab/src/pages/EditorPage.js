@@ -22,7 +22,7 @@ const EditorPage = () => {
 
             function handleErrors(e) {
                 console.log('socket error', e);
-                toast.error('Socket connection failed, try again later.');
+                toast.error('Socket connection failed');
                 reactNavigator('/');
             }
 
@@ -38,7 +38,7 @@ const EditorPage = () => {
                     // will display a toast message except the one who joined
                     if (username !== location.state?.username) {
                         toast.success(`${username} joined the room.`);
-                        console.log(`${username} joined`);
+                        // console.log(`${username} joined`);
                     }
                     //If the new users joined they can read the code written by previously joined users
                     setClients(clients);
@@ -63,7 +63,7 @@ const EditorPage = () => {
             );
         };
         init();
-        // error :- application will display the user avatar and corresponding code editor 
+        // error :- application will display the user avatar and corresponding code editor multiple times
         // because there is issue regarding the socket disconnection for that particular user
         return () => {
             // socketRef.current.disconnect();
@@ -93,9 +93,9 @@ const EditorPage = () => {
     return (
         <div className="mainWrap">
             <div className="aside">
-                <div className="asideInner">
-                    <div className="logo">
-                        <h2>Connected Members</h2>
+                <div className="inner">
+                    <div className="heading">
+                        <h2>Collaborators</h2>
                     </div>
                     <div className="clientsList">
                         {clients.map((client) => (

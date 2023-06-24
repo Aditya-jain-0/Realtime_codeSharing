@@ -70,7 +70,7 @@ const Home = () => {
                     </button>
                     <span className="createInfo">
                         Create New Room &nbsp;
-                        <button onClick={createRoom} href="" className="createNewBtn">
+                        <button onClick={createRoom} href="" className="btn createNewBtn">
                             new room
                         </button>
                     </span>
